@@ -21,7 +21,8 @@ import { OrdersModule } from './orders/orders.module';
     }),
 
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
+      // autoSchemaFile: true,
+      autoSchemaFile: 'src/graphql.schema.gql',
     }),
     AuthModule,
     UsersModule,

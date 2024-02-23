@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UsersModel {
+  _id: String!
+  email: String!
+  permissions: [String!]!
+  lowercaseEmail: String!
+  timestamp: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type LoginResult {
+  user: UsersModel!
+  token: String!
+}
+
+type Order {
+  name: String!
+  owner: UsersModel!
+}
+
+type CreatedOrderDto {
+  _id: String!
+  name: String!
+  owner: String!
+}
+
+type Query {
+  login(user: LoginUserInput!): LoginResult!
+  refreshToken: String!
+  getAllOrders: [Order!]!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): LoginResult!
+  createOrder(createOrder: CreateOrderDto!): CreatedOrderDto!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+}
+
+input CreateOrderDto {
+  name: String!
+}
